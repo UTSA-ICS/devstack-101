@@ -1,0 +1,3 @@
+cd /opt/stack/logs
+
+tail -f screen-n-api.log

@@ -1,0 +1,14 @@
+glance image-list
+
+IMAGE="cirros-0.3.0-x86_64-disk.img"
+wget -nc http://launchpad.net/cirros/trunk/0.3.0/+download/$IMAGE
+
+glance image-create --name "test-image" --public --container-format bare --disk-format qcow2 < "$IMAGE"
+
+glance image-list
+
+nova boot --image test-image --flavor m1.tiny --key_name test MyThirdInstance
+
+nova list
+
+nova delete MyThirdInstance

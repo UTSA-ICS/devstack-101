@@ -1,0 +1,18 @@
+nova keypair-add test > test.pem
+chmod 600 test.pem
+
+nova keypair-list
+
+nova boot --image cirros-0.3.1-x86_64-uec --flavor m1.tiny --key-name test MySecondInstance
+
+nova list
+
+> /home/stack/.ssh/known_hosts
+
+ipaddress=... # Get IP address from nova list
+ssh -i test.pem cirros@$ipaddress
+
+cat /home/cirros/.ssh/authorized_keys
+exit
+
+nova delete MySecondInstance

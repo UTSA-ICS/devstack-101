@@ -1,0 +1,14 @@
+For the purpose of this tutorial, we will be running DevStack.
+  - Ubuntu 12.04
+  - At least 4GB of RAM
+
+From Joyent customer portal (10.245.122.6) create a new virtual machine with 4GB RAM profile:
+
+1. Login into your Joyent account
+2. Click on "order a machine"
+3. Scroll down and choose the "Machine Image" of type "ubuntu-12.04-openstack"
+4. Choose the profile 4GB RAM named "regular_4096" (name is visible when you mouse over the 4GB profile)
+5. Choose ICSR as the Datacenter
+6. You can give the VM a name or leave the field empty and a default ID will be given. 
+7. Click on Provision.
+8. After VM is running ssh into it using the IP address.

@@ -67,3 +67,6 @@ NEUTRON_BRANCH=stable/icehouse
 EOF
 
 ./stack.sh
+
+Ensure that there are no errors and this pases successfully. 
+If not then please check out the "Issues" section for further debugging.

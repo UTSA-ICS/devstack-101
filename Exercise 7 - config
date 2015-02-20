@@ -1,0 +1,13 @@
+cat /etc/nova/nova.conf
+
+What is the virtualization type in use?
+
+What type of scheduler is used?
+
+What network model is used?
+
+What is the debug level?
+
+Where are the instances stored?
+
+What is the messaging driver in use?

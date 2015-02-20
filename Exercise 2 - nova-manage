@@ -1,0 +1,9 @@
+nova-manage --help
+
+nova-manage service list
+
+nova-manage vm list
+
+nova-manage host list
+
+nova-manage fixed list

@@ -1,0 +1,34 @@
+cd /home/stack/devstack
+source openrc admin admin
+
+nova --help
+
+nova list
+
+nova image-list
+
+nova flavor-list
+
+nova boot --image cirros-0.3.1-x86_64-uec --flavor m1.tiny MyFirstInstance
+
+nova list
+
+ipaddress=... # Get IP address from nova list
+ping $ipaddress
+
+nova show MyFirstInstance
+
+ssh cirros@$ipaddress
+# password is cubswin:)
+
+uname -a
+free -m
+ifconfig
+ping google.com
+exit
+
+nova --debug list
+
+nova console-log MyFirstInstance
+
+nova delete MyFirstInstance

@@ -1,0 +1,35 @@
+# Create the user-data script
+cat > ~/user-data.txt <<EOF
+#!/bin/sh
+echo "Hello World.  The time is now $(date -R)!" | tee /home/cirros//output.txt
+EOF
+
+# Create a new instance with the user-data
+nova boot --image cirros-0.3.1-x86_64-uec --flavor m1.tiny --key_name test --user_data ~/user-data.txt MyUserDataInstance
+
+nova list
+
+> /home/stack/.ssh/known_hosts
+
+ipaddress=... # Get IP address from nova list
+ssh -i test.pem cirros@$ipaddress
+
+cat output.txt
+
+curl http://169.254.169.254/
+
+curl http://169.254.169.254/latest
+
+curl http://169.254.169.254/latest/user-data
+
+exit
+
+# Nova-network configures iptables to NAT port 80 of 169.254.169.254 to the $my-ip
+sudo iptables -L -n -t nat | grep 169
+# my_ip address is specified in /etc/nova/nova.conf
+cat /etc/nova/nova.conf | grep my_ip
+
+# meta-data api is running on the api server
+cat /etc/nova/nova.conf | grep enabled_apis
+
+nova delete MyUserDataInstance

@@ -1,14 +1,18 @@
 
 Log in as root and setup stack user id
 =======================================
-``ssh root@$server_ip``
+::
+	ssh root@$server_ip
+	
 # Add an entry for your hostname to the /etc/hosts file.
-``echo "VM IP ADDRESS   $HOSTNAME"  >> /etc/hosts``
-#
-``adduser stack``
-``echo "stack ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers``
-``apt-get update; apt-get install -qqy git``
-``exit``
+::
+	echo "VM IP ADDRESS   $HOSTNAME"  >> /etc/hosts
+	adduser stack
+	echo "stack ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+	apt-get update; apt-get install -qqy git
+	exit
+
+Done with Changes
 
 ssh stack@$server_ip
 git clone https://github.com/openstack-dev/devstack.git

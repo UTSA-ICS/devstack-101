@@ -1,20 +1,33 @@
+Install and setup devstack
+==========================
 
-Log in as root and setup stack user id::
-	ssh root@$server_ip
+Log in as root to the server
+::
+	ssh root@$server_ip 
 	
-# Add an entry for your hostname to the /etc/hosts file.
+Now add an entry for your hostname to the /etc/hosts file.
 ::
 	echo "VM_IP_ADDRESS   $HOSTNAME"  >> /etc/hosts
 	[e.g.-> echo "10.245.122.27 $HOSTNAME" >> /etc/hosts]
+	
+Create the 'stack' user and update it in the sudoers file
+::
 	adduser stack
 	echo "stack ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-	apt-get update; apt-get install -qqy git
-	exit
-	ssh stack@$server_ip
-	git clone https://github.com/openstack-dev/devstack.git
-	cd devstack
-	git checkout stable/icehouse
 
+Install git and exit the server
+::
+	apt-get install -qqy git
+	exit
+
+Now Log in as 'stack' user and download devstack code
+::
+	ssh stack@$server_ip
+	git clone -b stable/icehouse https://github.com/openstack-dev/devstack.git
+
+Create the localrc file and then run the startup script for devstack
+::
+	cd devstack
 	cat >> localrc <<EOF
 	DEST=/opt/stack
 	ADMIN_PASSWORD=admin

@@ -9,8 +9,8 @@ Now add an entry for your hostname to the /etc/hosts file.
 ::
 	sudo echo "YOUR_VM_IP_ADDRESS $HOSTNAME" | sudo tee -a /etc/hosts
 	[for example-> sudo echo "10.245.122.27 $HOSTNAME" | sudo tee -a /etc/hosts]
+	exit
 
- 	
 .. Create the 'stack' user and update it in the sudoers file
 .. ::
 .. 	sudo adduser stack
@@ -20,10 +20,10 @@ Now add an entry for your hostname to the /etc/hosts file.
 .. 	sudo mkdir /opt/stack
 .. 	sudo chown stack.stack /opt/stack
 
-Install git and exit the server
-::
-	sudo apt-get install -qqy git
-	exit
+.. Install git and exit the server
+.. ::
+.. 	sudo apt-get install -qqy git
+..	exit
 
 .. Now Log in as 'stack' user and download devstack code
 .. git clone -b stable/juno https://github.com/openstack-dev/devstack.git

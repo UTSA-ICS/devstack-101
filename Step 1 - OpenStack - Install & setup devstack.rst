@@ -26,14 +26,11 @@ Install git and exit the server
 	exit
 
 .. Now Log in as 'stack' user and download devstack code
+.. git clone -b stable/juno https://github.com/openstack-dev/devstack.git
 Now Log in as 'stack' user start the 'stack.sh' script
 ::
 	ssh stack@$server_ip
-..	git clone -b stable/juno https://github.com/openstack-dev/devstack.git
-..
-
 	cd /opt/stack/devstack
-
 ..
 .. Create the localrc file and then run the startup script for devstack
 .. ::
@@ -91,6 +88,7 @@ Now Log in as 'stack' user start the 'stack.sh' script
 	NEUTRON_BRANCH=stable/juno
 	EOF
 ..
+::
 
 	./stack.sh
 

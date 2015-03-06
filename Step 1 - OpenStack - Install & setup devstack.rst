@@ -85,7 +85,6 @@ Create the localrc file and then run the startup script for devstack
 	KEYSTONE_BRANCH=stable/juno
 	NOVA_BRANCH=stable/juno
 	NEUTRON_BRANCH=stable/juno
-	TEMPEST_BRANCH=stable/juno
 	EOF
 
 	./stack.sh

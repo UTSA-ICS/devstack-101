@@ -27,11 +27,12 @@ Install git and exit the server
 Now Log in as 'stack' user and download devstack code
 ::
 	ssh stack@$server_ip
+	cd /opt/stack
 	git clone -b stable/juno https://github.com/openstack-dev/devstack.git
+	cd devstack
 
 Create the localrc file and then run the startup script for devstack
 ::
-	cd devstack
 	cat >> localrc <<EOF
 	DEST=/opt/stack
 	ADMIN_PASSWORD=admin
@@ -52,7 +53,7 @@ Create the localrc file and then run the startup script for devstack
  	FLOATING_RANGE=192.168.1.128/25
 	## Updating Default Services ##
 	disable_all_services
-
+	##########################################################
 	# core compute (glance / keystone / nova (+ nova-network))
 	ENABLED_SERVICES=g-api,g-reg,key,n-api,n-crt,n-obj,n-cpu,n-net,n-cond,n-sch,n-novnc,n-xvnc,n-cauth
 	# cinder

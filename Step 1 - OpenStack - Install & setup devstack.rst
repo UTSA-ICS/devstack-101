@@ -15,9 +15,15 @@ Create the 'stack' user and update it in the sudoers file
 	sudo adduser stack
 	sudo echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
+..
+.. How do comments work
 Install git and exit the server
+..
+.. This is a comment
 ::
+	..
 	.. sudo sed -i "s/^PasswordAuthentication.*/PasswordAuthentication yes/" /etc/ssh/sshd_config
+	..
   	sudo service ssh restart
 	sudo apt-get install -qqy git
 	sudo mkdir /opt/stack

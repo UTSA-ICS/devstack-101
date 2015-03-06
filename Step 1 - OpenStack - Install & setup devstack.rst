@@ -18,7 +18,7 @@ Create the 'stack' user and update it in the sudoers file
 Install git and exit the server
 ::
 	sudo sed -i "s/^PasswordAuthentication.*/PasswordAuthentication yes/" /etc/ssh/sshd_config
-  sudo service ssh restart
+  	sudo service ssh restart
 	sudo apt-get install -qqy git
 	sudo mkdir /opt/stack
 	sudo chown stack.stack /opt/stack

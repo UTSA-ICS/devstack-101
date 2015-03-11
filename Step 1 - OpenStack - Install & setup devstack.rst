@@ -1,18 +1,22 @@
 Install and setup devstack
 ==========================
 
-Log in as ubuntu to the server
+Log in as stack to the server (Password is 'stack')
 ::
-	ssh ubuntu@$server_ip 
+	ssh stack@$server_ip 
 	
-Now add an entry for your hostname to the /etc/hosts file.
+Now update the hostname to the name of your instance
 ::
-	sudo echo "YOUR_VM_IP_ADDRESS $HOSTNAME" | sudo tee -a /etc/hosts
-	[for example-> sudo echo "10.245.122.27 $HOSTNAME" | sudo tee -a /etc/hosts]
+	MY_HOST=THE_INSTANCE_NAME
+	sudo sed -i "s/^127.0.0.1 localhost.*/127.0.0.1 localhost $MY_HOST/" /etc/hosts
+	sudo echo "$MY_HOST" |sudo tee -a /etc/hostname
+	sudo hostname $MY_HOST
 	exit
 
 .. Create the 'stack' user and update it in the sudoers file
 .. ::
+..	sudo echo "YOUR_VM_IP_ADDRESS $HOSTNAME" | sudo tee -a /etc/hosts
+..	[for example-> sudo echo "10.245.122.27 $HOSTNAME" | sudo tee -a /etc/hosts]
 .. 	sudo adduser stack
 .. 	sudo echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 .. 	sudo sed -i "s/^PasswordAuthentication.*/PasswordAuthentication yes/" /etc/ssh/sshd_config

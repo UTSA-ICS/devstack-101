@@ -16,6 +16,7 @@ Policy Enforcement
 * Update the policy for ‘tadmin’ to permit the execution of the following commands:
 * Any keystone user management commands (create/update/delete users)
 * Any keystone command to manage role (role assignment, update/ deletion)
-* Add a custom policy check in Nova code that was added for exercise 2 to display deleted and active VMs ONLY for the ‘tadmin’ and ‘admin’ role and NOT for ‘demo’ role.
+* Add a custom policy check in Nova code that was added for exercise 2 to display deleted and active VMs ONLY for the ‘tadmin’ and ‘admin’ role and NOT for ‘demo’ role
 * The policy will need to be implemented in the policy.json file.
 
+**Debugging Hints are at https://github.com/UTSA-ICS/devstack-101/blob/master/Debugging%20hints.rst**

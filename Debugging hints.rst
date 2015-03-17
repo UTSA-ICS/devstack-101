@@ -2,15 +2,15 @@ URL Routing
 -----------
 
 For routing of URL to method name look at this file on nova server:
-	``/opt/stack/nova/nova/api/openstack/compute/__init__.py``
+``/opt/stack/nova/nova/api/openstack/compute/__init__.py``
 
 To understand how this works read these 2 links:	
-	http://docs.openstack.org/developer/nova/devref/addmethod.openstackapi.html#routing
-	http://docs.openstack.org/developer/nova/devref/addmethod.openstackapi.html#controllers-and-actions
+http://docs.openstack.org/developer/nova/devref/addmethod.openstackapi.html#routing
+http://docs.openstack.org/developer/nova/devref/addmethod.openstackapi.html#controllers-and-actions
 
 This is a the doc for the routes module that is used to implement the URL routing in openstack. Read this thoroughly!
-	https://routes.readthedocs.org/en/latest/introduction.html
-	https://routes.readthedocs.org/en/latest/glossary.html
+https://routes.readthedocs.org/en/latest/introduction.html
+https://routes.readthedocs.org/en/latest/glossary.html
 
 Traceback
 ---------
@@ -27,10 +27,15 @@ Add traceback to the code and check the stack trace to see code path:
 Documentation links
 -------------------
 
-	http://docs.openstack.org/developer/nova/devref/index.html
-	https://github.com/openstack/nova
-	http://docs.openstack.org/trunk/openstack-compute/admin/content/
-	http://docs.openstack.org/api/openstack-compute/2/content/
+Nova developer Reference:
+http://docs.openstack.org/developer/nova/devref/index.html
+
+Nova code in github:
+https://github.com/openstack/nova
+
+Nova API Reference:
+http://docs.openstack.org/trunk/openstack-compute/admin/content/
+http://docs.openstack.org/api/openstack-compute/2/content/
 
 File/content search tips
 -------------------------

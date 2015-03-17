@@ -6,9 +6,9 @@ Policy Enforcement
 * As “admin” user using the Horizon GUI or command line add a new role called ‘tadmin’ to the devstack installation
 * Now associate this role with the ’demo’ user
 * Update the policy for ‘nova’ such that when you type the command “nova usage-list” it allows the demo user to list usage data for all tenants
- - http://docs.openstack.org/admin-guide-cloud/content/keystone-concepts.html
- - http://docs.openstack.org/trunk/openstack-network/admin/content/ch_auth.html
- - nova policy is stored in /etc/nova/policy.json file.
+- http://docs.openstack.org/admin-guide-cloud/content/keystone-concepts.html
+- http://docs.openstack.org/trunk/openstack-network/admin/content/ch_auth.html
+- nova policy is stored in /etc/nova/policy.json file.
 
 **Part II**
 

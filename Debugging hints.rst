@@ -56,22 +56,22 @@ Documentation links
 -------------------
 
 Nova developer Reference:
-	http://docs.openstack.org/developer/nova/devref/index.html
+http://docs.openstack.org/developer/nova/devref/index.html
 
 Nova code in github:
-	https://github.com/openstack/nova
+https://github.com/openstack/nova
 
 Nova API Reference:
-	http://docs.openstack.org/trunk/openstack-compute/admin/content/
-	http://docs.openstack.org/api/openstack-compute/2/content/
+http://docs.openstack.org/trunk/openstack-compute/admin/content/
+http://docs.openstack.org/api/openstack-compute/2/content/
 	
 Excellent Doc on Debugging using PyCharm:
-	http://tropicaldevel.wordpress.com/2013/01/24/debugging-openstack-with-pycharm-and-pydevd/
+http://tropicaldevel.wordpress.com/2013/01/24/debugging-openstack-with-pycharm-and-pydevd/
 
 Debugging Links:
-	http://debugopenstack.blogspot.com/
-	https://wiki.openstack.org/wiki/Setup_keystone_in_Eclipse
-	http://pydev.org/manual_adv_remote_debugger.html
-	http://vmartinezdelacruz.com/logging-and-debugging-in-openstack/
-	http://anteaya.info/blog/2013/01/16/who-are-you-and-what-are-you-going-to-do/
-	https://kashyapc.wordpress.com/2013/03/27/debugging-nova-a-small-illustration-with-pdb/
+http://debugopenstack.blogspot.com/
+https://wiki.openstack.org/wiki/Setup_keystone_in_Eclipse
+http://pydev.org/manual_adv_remote_debugger.html
+http://vmartinezdelacruz.com/logging-and-debugging-in-openstack/
+http://anteaya.info/blog/2013/01/16/who-are-you-and-what-are-you-going-to-do/
+https://kashyapc.wordpress.com/2013/03/27/debugging-nova-a-small-illustration-with-pdb/

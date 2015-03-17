@@ -28,14 +28,18 @@ Documentation links
 -------------------
 
 Nova developer Reference:
+
 http://docs.openstack.org/developer/nova/devref/index.html
 
 Nova code in github:
+
 https://github.com/openstack/nova
 
 Nova API Reference:
+
 http://docs.openstack.org/trunk/openstack-compute/admin/content/
 http://docs.openstack.org/api/openstack-compute/2/content/
+
 
 File/content search tips
 -------------------------

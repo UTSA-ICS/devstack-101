@@ -12,3 +12,6 @@ Run the following commands:
 3. Trace and document the code path that is taken from 'nova client' to 'nova server' for this list command to work. 
    The nova client code is located at ``/usr/local/lib/python2.7/dist-packages/novaclient``
    and the nova server code is loctaed at ``/opt/stack/nova/nova``.
+
+
+**Debugging Hints are at https://github.com/UTSA-ICS/devstack-101/blob/master/Debugging%20hints.rst**

@@ -18,6 +18,6 @@ Policy Enforcement
 * Any keystone command to manage role (role assignment, update/ deletion)
 * Add a custom policy check in Nova code that was added for exercise 2 to display deleted and active VMs ONLY for the ‘tadmin’ and ‘admin’ role and NOT for ‘demo’ role
 * The policy will need to be implemented in the policy.json file.
-* A user with admin role should be able to isue these commands with no restrictions. A user with tadmin role can only issue these commands in the project that this user is assigned to. 
+* A user with admin role should be able to issue these commands with no restrictions. A user with tadmin role can only issue these commands in the project that this user is assigned to. 
 
 **Debugging Hints are at https://github.com/UTSA-ICS/devstack-101/blob/master/Debugging%20hints.rst**

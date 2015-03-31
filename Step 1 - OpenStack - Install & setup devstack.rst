@@ -1,100 +1,30 @@
 Install and setup devstack
 ==========================
 
-Log in as stack to the server (Password is 'stack')
+Login to OpenStack Horizon portal (10.245.121.4)
+
+Create a keypair
+::
+	Now click on “Access & Security” Tab again and Click on the subTab “Key Pairs”
+	Either create a new keypair or import an existing KeyPair.
+
+Create an instance using the devstack-<release> snapshot.
+::
+	Click on “Instances” and then on “Launch Instance”
+	Fill in the following fields:
+      		- “Instance Name” : <Any meaningful name>
+      		- “Flavor” : m1.medium	
+      		- “Instance Boot Source” : Boot From Snapshot
+      		- “Image Name” : devstack-juno
+	Now click on “Launch”
+	Click on the instance name and check the 'Log' to see when the VM login screen appears
+
+Log in as stack to the server (Password is 'stack') and ensure that nova list works
 ::
 	ssh stack@$server_ip 
-	
-Now update the hostname to the name of your instance
-::
-	MY_HOST=THE_INSTANCE_NAME
-	sudo sed -i "s/^127.0.0.1 localhost.*/127.0.0.1 localhost $MY_HOST/" /etc/hosts
-	sudo echo "$MY_HOST" |sudo tee -a /etc/hostname
-	sudo hostname $MY_HOST
-	exit
-
-.. Create the 'stack' user and update it in the sudoers file
-.. ::
-..	sudo echo "YOUR_VM_IP_ADDRESS $HOSTNAME" | sudo tee -a /etc/hosts
-..	[for example-> sudo echo "10.245.122.27 $HOSTNAME" | sudo tee -a /etc/hosts]
-.. 	sudo adduser stack
-.. 	sudo echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
-.. 	sudo sed -i "s/^PasswordAuthentication.*/PasswordAuthentication yes/" /etc/ssh/sshd_config
-.. 	sudo service ssh restart
-.. 	sudo mkdir /opt/stack
-.. 	sudo chown stack.stack /opt/stack
-
-.. Install git and exit the server
-.. ::
-.. 	sudo apt-get install -qqy git
-..	exit
-
-.. Now Log in as 'stack' user and download devstack code
-.. git clone -b stable/juno https://github.com/openstack-dev/devstack.git
-Now Log in as 'stack' user start the 'stack.sh' script
-::
-	ssh stack@$server_ip
 	cd /opt/stack/devstack
-..
-.. Create the localrc file and then run the startup script for devstack
-.. ::
-	cat >> localrc <<EOF
-	DEST=/opt/stack
-	ADMIN_PASSWORD=admin
-	MYSQL_PASSWORD=admin
-	RABBIT_PASSWORD=admin
-	SERVICE_TOKEN=admin
-	SERVICE_PASSWORD=admin
-	LOGFILE=/opt/stack/logs/stack.log
-	SCREEN_LOGDIR=/opt/stack/logs
-	VERBOSE=True
-	## Controller Host ##
-	# HOST_IP=<IP ADDRESS>
-	# MULTI_HOST=1
-	## Network nova-network ##
-	FLAT_INTERFACE=eth0
-	FIXED_RANGE=172.24.17.0/24
-	FIXED_NETWORK_SIZE=254
-	FLOATING_RANGE=192.168.1.128/25
-	## Updating Default Services ##
-	disable_all_services
-	##########################################################
-	# core compute (glance / keystone / nova (+ nova-network))
-	ENABLED_SERVICES=g-api,g-reg,key,n-api,n-crt,n-obj,n-cpu,n-net,n-cond,n-sch,n-novnc,n-xvnc,n-cauth
-	# cinder
-	ENABLED_SERVICES+=,c-sch,c-api,c-vol
-	# heat
-	#ENABLED_SERVICES+=,h-eng,h-api,h-api-cfn,h-api-cw
-	# dashboard
-	ENABLED_SERVICES+=,horizon
-	# additional services
-	ENABLED_SERVICES+=,rabbit,tempest,mysql
-	# To enable Neutron
-	#DISABLE_SERVICES=n-net
-	#ENABLED_SERVICES+=,q-svc,q-agt,q-dhcp,q-l3,q-meta
-	# Swift Services
-	#ENABLED_SERVICES+=,s-proxy,s-object,s-container,s-account
-	#SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
-	#SWIFT_REPLICAS=1
-	#SWIFT_DATA_DIR=/opt/stack/data
-	#
-	## Logs ##
-	SCREEN_LOGDIR=/opt/stack/logs/screen
-	KEYSTONE_TOKEN_FORMAT=PKI
-	####################
-	# Branch specifics
-	####################
-	CINDER_BRANCH=stable/juno
-	GLANCE_BRANCH=stable/juno
-	HORIZON_BRANCH=stable/juno
-	KEYSTONE_BRANCH=stable/juno
-	NOVA_BRANCH=stable/juno
-	NEUTRON_BRANCH=stable/juno
-	EOF
-..
-::
-
-	./stack.sh
+	source openrc admin admin
+	nova list
 
 Ensure that there are no errors and this pases successfully. 
 If not then please check out the "Issues" section for further debugging.

@@ -5,7 +5,7 @@ Login to OpenStack Horizon portal (10.245.121.4)
 
 Create a keypair
 ::
-	Now click on “Access & Security” Tab again and Click on the subTab “Key Pairs”
+	Click on “Access & Security” Tab again and Click on the subTab “Key Pairs”
 	Either create a new keypair or import an existing KeyPair.
 
 Create an instance using the devstack-<release> snapshot.

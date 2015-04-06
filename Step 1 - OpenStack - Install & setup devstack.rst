@@ -15,7 +15,7 @@ Create an instance using the devstack-<release> snapshot.
       		- “Instance Name” : <Any meaningful name>
       		- “Flavor” : m1.medium	
       		- “Instance Boot Source” : Boot From Snapshot
-      		- “Image Name” : devstack-juno
+      		- “Image Name” : devstack-juno OR devstack-master
 	Now click on “Launch”
 	Click on the instance name and check the 'Log' to see when the VM login screen appears
 

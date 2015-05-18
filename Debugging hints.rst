@@ -64,6 +64,15 @@ https://github.com/openstack/nova
 Nova API Reference:
 http://docs.openstack.org/trunk/openstack-compute/admin/content/
 http://docs.openstack.org/api/openstack-compute/2/content/
+
+Programming in OpenStack:
+http://docs.openstack.org/api/openstack-compute/programmer/content/introduction.html
+
+Adding methods in API (Developer reference for Nova):
+http://docs.openstack.org/developer/nova/devref/addmethod.openstackapi.html
+
+PyThon Bindings:
+http://docs.openstack.org/developer/python-novaclient/
 	
 Excellent Doc on Debugging using PyCharm:
 http://tropicaldevel.wordpress.com/2013/01/24/debugging-openstack-with-pycharm-and-pydevd/

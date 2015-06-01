@@ -6,6 +6,15 @@ Install Docker:
   sudo wget -qO- https://get.docker.com/ | sh
   docker version
   (Ensure Docker version is set to 1.6.x)
+  sudo usermod -aG docker stack
+  exit
+  (Re-login as stack to pick up docker installation)
+  ssh stack@<YOUR_VM_IP>
+  
+Verify Docker
+::
+  docker run hello-world
+  (Ensure docker is working properly)
 
 Install Docker Driver
 ::
@@ -122,13 +131,19 @@ Docker runtime configuration
 Update docker image in glance
 ::
   source /opt/stack/devstack/openrc admin admin
+
   docker pull rastasheep/ubuntu-sshd
   docker save rastasheep/ubuntu-sshd | glance image-create --is-public=True --container-format=docker --disk-format=raw --name rastasheep/ubuntu-sshd
-  
+
+  docker pull larsks/thttpd
+  docker save larsks/thttpd | glance image-create --is-public=True --container-format=docker --disk-format=raw --name larsks/thttpd
+
 Now test it
 ::
+  source /opt/stack/devstack/openrc demo demo
   glance image-list
   nova boot --flavor m1.small --image rastasheep/ubuntu-sshd MySSHDocker
+  nova boot --flavor m1.small --image larsks/thttpd MyWebServerDocker
   nova list
   # ping the IP address of the container after it is ACTIVE
   

@@ -128,7 +128,7 @@ Docker runtime configuration
   #
   ln: CommandFilter, /bin/ln, root
   
-Update docker image in glance
+Update docker images in glance
 ::
   source /opt/stack/devstack/openrc admin admin
 
@@ -138,12 +138,12 @@ Update docker image in glance
   docker pull larsks/thttpd
   docker save larsks/thttpd | glance image-create --is-public=True --container-format=docker --disk-format=raw --name larsks/thttpd
 
-Now test it
+Test a Container creation
 ::
   source /opt/stack/devstack/openrc demo demo
   glance image-list
-  nova boot --flavor m1.small --image rastasheep/ubuntu-sshd MySSHDocker
   nova boot --flavor m1.small --image larsks/thttpd MyWebServerDocker
   nova list
-  # ping the IP address of the container after it is ACTIVE
+  curl http://<nova instance IP>
+  
   

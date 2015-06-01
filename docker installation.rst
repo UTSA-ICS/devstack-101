@@ -118,7 +118,7 @@ Now Restack:
 Docker runtime configuration
 ::
   (Run the following command - copy till EOF)
-  sudo tee -a /etc/nova/rootwrap.d/docker.filters <<EOF
+  sudo tee /etc/nova/rootwrap.d/docker.filters <<EOF
   # nova-rootwrap command filters for setting up network in the docker driver
   # This file should be owned by (and only-writeable by) the root user
   #

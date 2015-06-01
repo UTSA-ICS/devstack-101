@@ -80,8 +80,18 @@ Update the localrc file in devstack directory (Copy the fopllowing into local.co
 
 Docker runtime configuration
 ::
+  sudo vi /etc/nova/rootwrap.d/docker.filters
+  # Paste the following:
+  # nova-rootwrap command filters for setting up network in the docker driver
+  # This file should be owned by (and only-writeable by) the root user
+  #
+  [Filters]
+  #
+  # nova/virt/docker/driver.py: 'ln', '-sf', '/var/run/netns/.*'
+  #
+  ln: CommandFilter, /bin/ln, root
   
-
+  
 Nova Compute Update
 ::
-
+  

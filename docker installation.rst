@@ -3,6 +3,12 @@ Install and setup docker
 
 Install Docker:
 ::
+  sudo apt-get update
+  sudo apt-get install docker.io
+  sudo usermod -aG docker stack
+  docker version
+  (Ensure Docker version is 1.0.1)
+  OR
   wget -qO- https://get.docker.com/ | sh
   docker version
   (Ensure Docker version is set to 1.6.x)

@@ -121,6 +121,7 @@ Docker runtime configuration
   
 Update docker image in glance
 ::
+  source /opt/stack/devstack/openrc admin admin
   docker pull rastasheep/ubuntu-sshd
   docker save rastasheep/ubuntu-sshd | glance image-create --is-public=True --container-format=docker --disk-format=raw --name rastasheep/ubuntu-sshd
   

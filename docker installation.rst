@@ -117,8 +117,8 @@ Now Restack:
   
 Docker runtime configuration
 ::
-  sudo vi /etc/nova/rootwrap.d/docker.filters
-  # Paste the following:
+  (Run the following command)
+  sudo cat >> /etc/nova/rootwrap.d/docker.filters <<EOF
   # nova-rootwrap command filters for setting up network in the docker driver
   # This file should be owned by (and only-writeable by) the root user
   #
@@ -127,6 +127,7 @@ Docker runtime configuration
   # nova/virt/docker/driver.py: 'ln', '-sf', '/var/run/netns/.*'
   #
   ln: CommandFilter, /bin/ln, root
+  EOF
   
 Update docker images in glance
 ::

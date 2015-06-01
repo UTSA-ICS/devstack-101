@@ -94,4 +94,16 @@ Docker runtime configuration
   
 Nova Compute Update
 ::
+  vi /opt/stack/nova/nova/compute/hv_type.py
+  EDIT this file to include docker:
   
+  BHYVE = "bhyve"
+  DOCKER = "docker"
+  FAKE = "fake"
+
+  BHYVE,
+  DOCKER,
+  FAKE,
+  
+Next
+::

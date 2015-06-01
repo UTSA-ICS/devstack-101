@@ -3,12 +3,6 @@ Install and setup docker
 
 Install Docker:
 ::
-  sudo apt-get update
-  sudo apt-get install docker.io
-  sudo usermod -aG docker stack
-  docker version
-  (Ensure Docker version is 1.0.1)
-  OR
   sudo wget -qO- https://get.docker.com/ | sh
   docker version
   (Ensure Docker version is set to 1.6.x)
@@ -17,8 +11,13 @@ Install Docker Driver
 ::
   git clone https://git.openstack.org/stackforge/nova-docker /opt/stack/nova-docker
   cd /opt/stack/nova-docker
-  ./contrib/devstack/prepare_devstack.sh
   python setup.py install
+  
+Update devstack for docker
+::
+  cd /opt/stack/nova-docker
+  ./contrib/devstack/prepare_devstack.sh
+  rm -f /opt/stack/devstack/localrc
   
 Update the localrc file in devstack directory (Copy the fopllowing into local.conf in devstack directory and remove localrc file)
 ::
@@ -87,21 +86,6 @@ Update the localrc file in devstack directory (Copy the fopllowing into local.co
   [[post-config|$NOVA_CONF]]
   [DEFAULT]
   compute_driver=novadocker.virt.docker.DockerDriver
-
-
-Docker runtime configuration
-::
-  sudo vi /etc/nova/rootwrap.d/docker.filters
-  # Paste the following:
-  # nova-rootwrap command filters for setting up network in the docker driver
-  # This file should be owned by (and only-writeable by) the root user
-  #
-  [Filters]
-  #
-  # nova/virt/docker/driver.py: 'ln', '-sf', '/var/run/netns/.*'
-  #
-  ln: CommandFilter, /bin/ln, root
-  
   
 Nova Compute Update
 ::
@@ -116,7 +100,34 @@ Nova Compute Update
   DOCKER,
   FAKE,
   
+Now Restack:
+::
+  cd /opt/stack/devstack
+  HOST_IP=127.0.0.1 ./unstack.sh
+  HOST_IP=127.0.0.1 ./stack.sh
+  
+Docker runtime configuration
+::
+  sudo vi /etc/nova/rootwrap.d/docker.filters
+  # Paste the following:
+  # nova-rootwrap command filters for setting up network in the docker driver
+  # This file should be owned by (and only-writeable by) the root user
+  #
+  [Filters]
+  #
+  # nova/virt/docker/driver.py: 'ln', '-sf', '/var/run/netns/.*'
+  #
+  ln: CommandFilter, /bin/ln, root
+  
 Update docker image in glance
 ::
-  docker pull ubuntu
-  docker save ubuntu | glance image-create --is-public=True --container-format=docker --disk-format=raw --name ubuntu
+  docker pull rastasheep/ubuntu-sshd
+  docker save rastasheep/ubuntu-sshd | glance image-create --is-public=True --container-format=docker --disk-format=raw --name rastasheep/ubuntu-sshd
+  
+Now test it
+::
+  glance image-list
+  nova boot --flavor m1.small --image rastasheep/ubuntu-sshd MySSHDocker
+  nova list
+  # ping the IP address of the container after it is ACTIVE
+  

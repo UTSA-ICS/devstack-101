@@ -105,5 +105,7 @@ Nova Compute Update
   DOCKER,
   FAKE,
   
-Next
+Update docker image in glance
 ::
+  docker pull ubuntu
+  docker save ubuntu | glance image-create --is-public=True --container-format=docker --disk-format=raw --name ubuntu

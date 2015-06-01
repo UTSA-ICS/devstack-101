@@ -1,6 +1,11 @@
 Install and setup docker
 ==========================
 
+Install Docker:
+::
+  wget -qO- https://get.docker.com/ | sh
+  docker version
+  (Ensure Docker version is set to 1.6.x)
 
 Install Docker Driver
 ::

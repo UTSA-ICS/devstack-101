@@ -10,7 +10,7 @@ Install Docker Driver
   python setup.py install
   
 Update the localrc file in devstack directory (Copy the fopllowing into local.conf in devstack directory and remove localrc file)
-
+::
 [local|localrc]]
 DEST=/opt/stack
 ADMIN_PASSWORD=admin

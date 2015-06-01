@@ -9,7 +9,7 @@ Install Docker:
   docker version
   (Ensure Docker version is 1.0.1)
   OR
-  wget -qO- https://get.docker.com/ | sh
+  sudo wget -qO- https://get.docker.com/ | sh
   docker version
   (Ensure Docker version is set to 1.6.x)
 

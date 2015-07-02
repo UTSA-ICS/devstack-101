@@ -1,4 +1,4 @@
-cd /home/stack/devstack
+cd /opt/stack/devstack
 source openrc admin admin
 
 nova --help
@@ -9,7 +9,7 @@ nova image-list
 
 nova flavor-list
 
-nova boot --image cirros-0.3.1-x86_64-uec --flavor m1.tiny MyFirstInstance
+nova boot --image cirros-0.3.2-x86_64-uec --flavor m1.tiny MyFirstInstance
 
 nova list
 

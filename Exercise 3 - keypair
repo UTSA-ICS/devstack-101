@@ -3,7 +3,7 @@ chmod 600 test.pem
 
 nova keypair-list
 
-nova boot --image cirros-0.3.1-x86_64-uec --flavor m1.tiny --key-name test MySecondInstance
+nova boot --image cirros-0.3.2-x86_64-uec --flavor m1.tiny --key-name test MySecondInstance
 
 nova list
 

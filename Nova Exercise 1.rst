@@ -15,6 +15,10 @@ Run the following commands:
    
    * Check the client.py file in python-novaclient/novaclient/[nova version]/client.py
    * Check the shell.py file in python-novaclient/novaclient/[nova version]/shell.py
+   * The command for checking the endpoint URLs is::
+   
+   	keystone endpoint-list
+   	keystone service-list
    * Find the method (function) that nova list calls
 
 

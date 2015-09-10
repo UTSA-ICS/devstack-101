@@ -26,5 +26,11 @@ Run the following commands:
    	* http://docs.openstack.org/developer/nova/
    	* http://docs.openstack.org/developer/nova/architecture.html
    	* http://docs.openstack.org/developer/keystone/architecture.html
+   	
+   *  To check if code has been modified from when it was checked out::
+   
+   	git status (in the source directory of the particular component)
+   	git diff <filename> (This will give you differences from the original version of the file)
+
 
 **Debugging Hints are at https://github.com/UTSA-ICS/devstack-101/blob/master/Debugging%20hints.rst**

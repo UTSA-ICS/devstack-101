@@ -20,6 +20,11 @@ Run the following commands:
    	keystone endpoint-list
    	keystone service-list
    * Find the method (function) that nova list calls
-
+   * Nova and Keystone Documentation:
+   
+      	* http://docs.openstack.org/developer/keystone/
+   	* http://docs.openstack.org/developer/nova/
+   	* http://docs.openstack.org/developer/nova/architecture.html
+   	* http://docs.openstack.org/developer/keystone/architecture.html
 
 **Debugging Hints are at https://github.com/UTSA-ICS/devstack-101/blob/master/Debugging%20hints.rst**

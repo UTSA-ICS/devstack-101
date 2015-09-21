@@ -9,7 +9,8 @@ http://docs.openstack.org/developer/nova/devref/addmethod.openstackapi.html#rout
 http://docs.openstack.org/developer/nova/devref/addmethod.openstackapi.html#controllers-and-actions
 
 This is a the doc for the routes module that is used to implement the URL routing in openstack. Read this thoroughly!
-https://routes.readthedocs.org/en/latest/introduction.html<br/>
+https://routes.readthedocs.org/en/latest/introduction.html  
+<br>
 https://routes.readthedocs.org/en/latest/glossary.html
 
 Traceback

@@ -15,8 +15,8 @@ Policy Enforcement
 
 * Update the policy for ‘tadmin’ to permit the execution of the following commands:
 * Any keystone user management commands (create/update/delete users)
-    * HINT - These commands are related to the identity of the user. The file/directory containing this command will be named as such.
-* Any keystone command to manage role (role assignment, update/ deletion)
+* HINT - These commands are related to the identity of the user. The file/directory containing this command will be named as such.
+* [OPTIONAL] Any keystone command to manage role (role assignment, update/ deletion)
 * Add a custom policy check in Nova code that was added for exercise 2 to display deleted and active VMs ONLY for the ‘tadmin’ and ‘admin’ role and NOT for ‘demo’ role
 * The policy will need to be implemented in the policy.json file.
 * A user with admin role should be able to issue these commands with no restrictions. A user with tadmin role can only issue these commands in the project that this user is assigned to. 

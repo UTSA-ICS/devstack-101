@@ -9,54 +9,23 @@ openstack image list
 
 openstack flavor list
 
-openstack server create --image cirros-0.3.2-x86_64-uec --flavor m1.tiny MyFirstInstance
-
+openstack server create --image cirros-0.3.2-x86_64-uec --flavor m1.tiny MY_FIRST_INSTANCE
+openstack floating ip create public  # Note the IP Address created.
+openstack server add floating ip MY_FIRST_INSTANCE IP_ADDRESS
 openstack server list
 
-#
-#  If you know how to create networking through the website, please proceed that way, if you want to learn how to do so
-#   through command line, here are the commands.  Your mileage may vary (YMMV).  We recommending learning both ways.
-#
+openstack security group list
+# note the default group ID for the demo group.
+openstack security group rule create --proto icmp --project demo SECURITY_GROUP_ID
+openstack security group rule create --proto tcp --project demo --dst-port 22 SECURITY_GROUP_ID
 
-# Create networking
-PROJECT_NAME="admin"
-PROJECT_ID=$(openstack project show -f shell -c id "$PROJECT_NAME" |cut -d"=" -f2 | tr -d '"')
 
-NETWORK_NAME="admin_network"
-SUBNET_NAME="admin_subnet"
-ROUTER_NAME="admin_router"
+IP_ADDRESS=... # Get IP address from nova list
+ping $IP_ADDRESS
 
-openstack network create --project "$PROJECT_ID" "$NETWORK_NAME"
-NETWORK_ID=$(openstack network show -f shell -c id "$NETWORK_NAME" |cut -d"=" -f2 | tr -d '"')
+nova show MY_FIRST_INSTANCE
 
-# Creating Subnetworking..."
-openstack subnet create --project "$PROJECT_ID" --dns-nameserver "8.8.8.8" --subnet-range "192.170.0.0/24" --allocation-pool start=192.170.0.10,end=192.170.0.200 --network "$NETWORK_ID" "$SUBNET_NAME"
-
-# Create a router..."
-openstack router create --project "$PROJECT_ID" "$ROUTER_NAME"
-
-# Acquiring router id..."
-ROUTER_ID=$(openstack router show -f shell "$ROUTER_NAME" -c id |cut -d"\"" -f 2)
-
-# Setting external gateway on router..."
-EXTERNAL_NETWORK_NAME=$(openstack network list --long | grep External | awk '{print $4}')
-EXTERNAL_NETWORK_ID=$(openstack network show -f shell "$EXTERNAL_NETWORK_NAME" -c id | cut -d "\"" -f 2)
-openstack router set --external-gateway "$EXTERNAL_NETWORK_ID" "$ROUTER_ID"
-
-# Adding subnet to router..."
-openstack router add subnet "$ROUTER_ID" "$SUBNET_NAME"
-
-#
-#  Once networking is complete, proceed here.
-#  Add SSH access under "Network" --> "Security Groups"  --> Defaults.
-#
-
-ipaddress=... # Get IP address from nova list
-ping $ipaddress
-
-nova show MyFirstInstance
-
-ssh cirros@$ipaddress
+ssh cirros@$IP_ADDRESS
 # password is cubswin:)
 
 uname -a
@@ -67,6 +36,6 @@ exit
 
 openstack server --debug list
 
-openstack console log show MyFirstInstance
+openstack console log show MY_FIRST_INSTANCE
 
-openstack server delete MyFirstInstance
+openstack server delete MY_FIRST_INSTANCE

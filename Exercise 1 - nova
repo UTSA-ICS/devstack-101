@@ -1,17 +1,55 @@
 cd /opt/stack/devstack
 source openrc admin admin
 
-nova --help
+openstack --help
 
-nova list
+openstack server list
 
-nova image-list
+openstack image list
 
-nova flavor-list
+openstack flavor list
 
-nova boot --image cirros-0.3.2-x86_64-uec --flavor m1.tiny MyFirstInstance
+openstack server create --image cirros-0.3.2-x86_64-uec --flavor m1.tiny MyFirstInstance
 
-nova list
+openstack server list
+
+#
+#  If you know how to create networking through the website, please proceed that way, if you want to learn how to do so
+#   through command line, here are the commands.  Your mileage may vary (YMMV).  We recommending learning both ways.
+#
+
+# Create networking
+PROJECT_NAME="admin"
+PROJECT_ID=$(openstack project show -f shell -c id "$PROJECT_NAME" |cut -d"=" -f2 | tr -d '"')
+
+NETWORK_NAME="admin_network"
+SUBNET_NAME="admin_subnet"
+ROUTER_NAME="admin_router"
+
+openstack network create --project "$PROJECT_ID" "$NETWORK_NAME"
+NETWORK_ID=$(openstack network show -f shell -c id "$NETWORK_NAME" |cut -d"=" -f2 | tr -d '"')
+
+# Creating Subnetworking..."
+openstack subnet create --project "$PROJECT_ID" --dns-nameserver "8.8.8.8" --subnet-range "192.170.0.0/24" --allocation-pool start=192.170.0.10,end=192.170.0.200 --network "$NETWORK_ID" "$SUBNET_NAME"
+
+# Create a router..."
+openstack router create --project "$PROJECT_ID" "$ROUTER_NAME"
+
+# Acquiring router id..."
+ROUTER_ID=$(openstack router show -f shell "$ROUTER_NAME" -c id |cut -d"\"" -f 2)
+
+# Setting external gateway on router..."
+EXTERNAL_NETWORK_NAME=$(openstack network list --long | grep External | awk '{print $4}')
+EXTERNAL_NETWORK_ID=$(openstack network show -f shell "$EXTERNAL_NETWORK_NAME" -c id | cut -d "\"" -f 2)
+openstack router set --external-gateway "$EXTERNAL_NETWORK_ID" "$ROUTER_ID"
+
+# Adding subnet to router..."
+openstack router add subnet "$ROUTER_ID" "$SUBNET_NAME"
+
+#
+#  Once networking is complete, proceed here.
+#  Add SSH access under "Network" --> "Security Groups"  --> Defaults.
+#
 
 ipaddress=... # Get IP address from nova list
 ping $ipaddress
@@ -27,8 +65,8 @@ ifconfig
 ping google.com
 exit
 
-nova --debug list
+openstack server --debug list
 
-nova console-log MyFirstInstance
+openstack console log show MyFirstInstance
 
-nova delete MyFirstInstance
+openstack server delete MyFirstInstance

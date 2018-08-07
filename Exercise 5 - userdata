@@ -5,9 +5,10 @@ echo "Hello World.  The time is now $(date -R)!" | tee /home/cirros//output.txt
 EOF
 
 # Create a new instance with the user-data
-nova boot --image cirros-0.3.1-x86_64-uec --flavor m1.tiny --key_name test --user_data ~/user-data.txt MyUserDataInstance
+openstack server create --image CirrOS --flavor m1.tiny --key_name test --user_data ~/user-data.txt MY_USER_DATA_VM
 
-nova list
+
+openstack server list
 
 > /home/stack/.ssh/known_hosts
 
@@ -32,4 +33,4 @@ cat /etc/nova/nova.conf | grep my_ip
 # meta-data api is running on the api server
 cat /etc/nova/nova.conf | grep enabled_apis
 
-nova delete MyUserDataInstance
+openstack server delete MY_USER_DATA_VM

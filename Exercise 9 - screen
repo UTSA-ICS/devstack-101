@@ -19,4 +19,4 @@ Use up arrow to choose the previous command and press ENTER
 # Detach from screen
 ctrl+a d
 
-nova list
+openstack server list

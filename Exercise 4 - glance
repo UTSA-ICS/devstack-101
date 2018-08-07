@@ -1,5 +1,6 @@
 openstack image list
 
+# Note: In CirrOS 0.4.0 on, the default password is: gocubsgo
 IMAGE="cirros-0.4.0-x86_64-disk.img"
 wget -nc http://download.cirros-cloud.net/0.4.0/$IMAGE
 

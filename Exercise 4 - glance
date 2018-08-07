@@ -1,14 +1,14 @@
-glance image-list
+openstack image list
 
-IMAGE="cirros-0.3.0-x86_64-disk.img"
-wget -nc http://launchpad.net/cirros/trunk/0.3.0/+download/$IMAGE
+IMAGE="cirros-0.4.0-x86_64-disk.img"
+wget -nc http://download.cirros-cloud.net/0.4.0/$IMAGE
 
-glance image-create --name "test-image" --public --container-format bare --disk-format qcow2 < "$IMAGE"
+openstack image-create  --public --container-format bare --disk-format qcow2 --file "$IMAGE" CirrOS
 
-glance image-list
+openstack image list
 
-nova boot --image test-image --flavor m1.tiny --key_name test MyThirdInstance
+openstack server create --image CirrOS --flavor m1.tiny MY_THIRD_INSTANCE
 
-nova list
+openstack server list
 
-nova delete MyThirdInstance
+openstack server delete MY_THIRD_INSTANCE

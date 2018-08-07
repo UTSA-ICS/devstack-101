@@ -1,9 +1,18 @@
+Docs: https://docs.openstack.org/nova/latest/cli/nova-manage.html
+Docs: https://docs.openstack.org/nova/queens/cli/nova-manage.html
+
+Nova-manage is depicated, however, parts still exist: The following commands are no longer valid, please choose from: 'version', 'bash-completion', 'network', 
+'cell_v2', 'db', 'cell', 'floating', 'api_db'.
+
 nova-manage --help
 
-nova-manage service list
+# nova-manage service list
+openstack service list
 
 nova-manage vm list
+openstack server list --all-projects --long
 
 nova-manage host list
 
 nova-manage fixed list
+openstack ip availability list

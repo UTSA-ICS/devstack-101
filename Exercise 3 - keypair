@@ -1,11 +1,11 @@
-nova keypair-add test > test.pem
+openstack keypair create test --private-key test.pem
 chmod 600 test.pem
 
-nova keypair-list
+openstack keypair list
 
-nova boot --image cirros-0.3.2-x86_64-uec --flavor m1.tiny --key-name test MySecondInstance
+openstack server create --image cirros-0.3.2-x86_64-uec --flavor m1.tiny MY_SECOND_INSTANCE
 
-nova list
+openstack server list
 
 > /home/stack/.ssh/known_hosts
 
@@ -15,4 +15,4 @@ ssh -i test.pem cirros@$ipaddress
 cat /home/cirros/.ssh/authorized_keys
 exit
 
-nova delete MySecondInstance
+openstack server delete MY_SECOND_INSTANCE
